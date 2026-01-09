@@ -149,6 +149,40 @@
             border-radius: 50%;
         }
 
+        /* Publications Section */
+        .publications {
+            padding: 96px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .publication {
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .publication:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .publication:first-of-type {
+            padding-top: 0;
+        }
+
+        .publication-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .publication-desc {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
         /* CTA Section */
         .cta {
             padding: 96px 0;
@@ -233,7 +267,7 @@
                 padding-top: 120px;
             }
 
-            .about, .mission, .cta {
+            .about, .mission, .publications, .cta {
                 padding: 64px 0;
             }
 
@@ -299,15 +333,35 @@
             </div>
         </section>
 
-        <section class="cta">
+        <section class="publications">
             <div class="container">
-                <div class="section-label">Enter</div>
-                <p class="cta-intro">Analysis published weekly. No algorithm optimization. No engagement farming.</p>
-                <div class="buttons">
+                <div class="section-label">Publications</div>
+                
+                <div class="publication">
+                    <h3 class="publication-title">Kingdom Code</h3>
+                    <p class="publication-desc">Pattern recognition on culture, theology, and extraction systems. The flagship analysis.</p>
                     <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                         Read Free Analysis
                         <span class="btn-arrow">→</span>
                     </a>
+                </div>
+
+                <div class="publication">
+                    <h3 class="publication-title">Kingdom Code: Gaming</h3>
+                    <p class="publication-desc">Autopsy and resurrection. Tracing the death of gaming's soul—and what's worth recovering from the wreckage.</p>
+                    <a href="https://kingdomcodegaming.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        Enter the Archive
+                        <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <div class="section-label">Support</div>
+                <p class="cta-intro">No algorithm optimization. No engagement farming. Independent analysis requires independent funding.</p>
+                <div class="buttons">
                     <a href="https://patreon.com/KingdomCode" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                         Support the Work
                         <span class="btn-arrow">→</span>
