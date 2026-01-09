@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kingdom Code - Intelligence on how the world actually works. Pattern recognition, extraction analysis, covenant design.">
-    <title>Kingdom Code | Intelligence on how the world actually works</title>
+    <meta name="description" content="Kingdom Code - Intelligence on how the world actually works.">
+    <title>Kingdom Code</title>
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -25,267 +25,124 @@
             --border-light: #3f3f46;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 24px;
         }
 
         .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border);
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
         }
 
         .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 48px;
-            opacity: 0.9;
+            margin-bottom: 16px;
         }
 
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+            }
         }
 
         .tagline {
             font-size: 1.125rem;
             color: var(--text-secondary);
             margin-bottom: 48px;
-            font-style: italic;
         }
 
-        .grain-statement {
-            font-size: 1rem;
-            color: var(--text-muted);
-            padding-left: 16px;
-            border-left: 2px solid var(--border-light);
-        }
-
-        /* About Section */
-        .about {
-            padding: 96px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .section-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-        }
-
-        .about-text {
-            font-size: 1.0625rem;
-            color: var(--text-secondary);
-            line-height: 1.75;
-        }
-
-        .about-text strong {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        /* Mission Section */
-        .mission {
-            padding: 96px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .mission-statement {
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
-            font-weight: 400;
-            line-height: 1.5;
-            color: var(--text-primary);
-        }
-
-        .mission-parts {
+        .links {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-top: 32px;
+            gap: 12px;
+            margin-bottom: 48px;
         }
 
-        .mission-part {
-            font-size: 0.9375rem;
-            color: var(--text-muted);
-            padding-left: 16px;
-            position: relative;
-        }
-
-        .mission-part::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-        }
-
-        /* Publications Section */
-        .publications {
-            padding: 96px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .publication {
-            padding: 32px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .publication:last-of-type {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .publication:first-of-type {
-            padding-top: 0;
-        }
-
-        .publication-title {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .publication-desc {
-            font-size: 0.9375rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 96px 0;
-        }
-
-        .cta-intro {
-            font-size: 0.9375rem;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-        }
-
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            font-size: 0.875rem;
-            font-weight: 500;
+        .link-card {
+            display: block;
+            padding: 18px 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            letter-spacing: 0.01em;
+            transition: all 0.25s ease;
         }
 
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
-        }
-
-        .btn-secondary:hover {
+        .link-card:hover {
             background: var(--bg-tertiary);
-            color: var(--text-primary);
-            border-color: var(--text-muted);
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .btn-arrow {
+        .link-title {
             font-size: 1rem;
-            transition: transform 0.2s ease;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
         }
 
-        .btn:hover .btn-arrow {
-            transform: translateX(2px);
-        }
-
-        /* Footer */
-        footer {
-            padding: 48px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-text {
+        .link-desc {
             font-size: 0.8125rem;
             color: var(--text-muted);
         }
 
-        /* Responsive */
-        @media (max-width: 640px) {
-            .container {
-                padding: 0 20px;
-            }
-
-            .hero {
-                padding: 60px 0;
-                min-height: auto;
-                padding-top: 120px;
-            }
-
-            .about, .mission, .publications, .cta {
-                padding: 64px 0;
-            }
-
-            .buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                justify-content: center;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
+        .support-link {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            margin-bottom: 48px;
         }
 
-        /* Subtle grain texture */
+        .support-link:hover {
+            color: var(--text-secondary);
+            border-color: var(--border-light);
+            background: var(--bg-secondary);
+        }
+
+        .footer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -300,81 +157,31 @@
     </style>
 </head>
 <body>
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="logo">Kingdom Code</div>
-                <h1>Intelligence on how the world actually works.</h1>
-                <p class="tagline">Pattern recognition for those building outside the system.</p>
-                <p class="grain-statement">Reality has a grain. You are going against it.</p>
-            </div>
-        </section>
-
-        <section class="about">
-            <div class="container">
-                <div class="section-label">What This Is</div>
-                <p class="about-text">
-                    Most modern strategy is built on a lie: that you can design systems ignoring human nature and creation physics without consequence. The result is the fragmentation you see in your news feed and your neighborhood.
-                    <br><br>
-                    I trace <strong>why artificial structures inevitably fail</strong>. By applying archaeological precision to modern chaos, I isolate the variables that actually yield fruit—separating extraction mechanics from covenant design, manufactured consensus from inherited wisdom.
-                </p>
-            </div>
-        </section>
-
-        <section class="mission">
-            <div class="container">
-                <div class="section-label">The Mission</div>
-                <p class="mission-statement">See the pattern. Exit the extraction. Build the real.</p>
-                <div class="mission-parts">
-                    <div class="mission-part">Identify the inversion before it costs you</div>
-                    <div class="mission-part">Map the exits they don't advertise</div>
-                    <div class="mission-part">Recover what works regardless of era</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="publications">
-            <div class="container">
-                <div class="section-label">Publications</div>
-                
-                <div class="publication">
-                    <h3 class="publication-title">Kingdom Code</h3>
-                    <p class="publication-desc">Pattern recognition on culture, theology, and extraction systems. The flagship analysis.</p>
-                    <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        Read Free Analysis
-                        <span class="btn-arrow">→</span>
-                    </a>
-                </div>
-
-                <div class="publication">
-                    <h3 class="publication-title">Kingdom Code: Gaming</h3>
-                    <p class="publication-desc">Autopsy and resurrection. Tracing the death of gaming's soul—and what's worth recovering from the wreckage.</p>
-                    <a href="https://kingdomcodegaming.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        Enter the Archive
-                        <span class="btn-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta">
-            <div class="container">
-                <div class="section-label">Support</div>
-                <p class="cta-intro">No algorithm optimization. No engagement farming. Independent analysis requires independent funding.</p>
-                <div class="buttons">
-                    <a href="https://patreon.com/KingdomCode" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                        Support the Work
-                        <span class="btn-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <span class="footer-text">© Kingdom Code</span>
+    <div class="container">
+        <div class="logo">
+            <span class="status-dot"></span>
+            Kingdom Code
         </div>
-    </footer>
+        
+        <p class="tagline">Intelligence on how the world actually works.</p>
+
+        <div class="links">
+            <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="link-card">
+                <div class="link-title">Kingdom Code</div>
+                <div class="link-desc">Pattern recognition on culture, theology, and extraction systems</div>
+            </a>
+
+            <a href="https://kingdomcodegaming.substack.com/" target="_blank" rel="noopener noreferrer" class="link-card">
+                <div class="link-title">Kingdom Code: Gaming</div>
+                <div class="link-desc">Autopsy and resurrection</div>
+            </a>
+        </div>
+
+        <a href="https://patreon.com/KingdomCode" target="_blank" rel="noopener noreferrer" class="support-link">
+            Support the Work
+        </a>
+
+        <div class="footer">© Kingdom Code</div>
+    </div>
 </body>
 </html>
