@@ -113,8 +113,9 @@
         }
 
         .contact-link {
-            display: block;
-            font-size: 0.8125rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-muted);
             text-decoration: none;
             margin-bottom: 32px;
@@ -122,7 +123,7 @@
         }
 
         .contact-link:hover {
-            color: var(--text-secondary);
+            color: var(--accent);
         }
 
         .footer {
@@ -173,8 +174,11 @@
             </a>
         </div>
 
-        <a href="mailto:KingdomCode@proton.me" class="contact-link">
-            KingdomCode@proton.me
+        <a href="mailto:KingdomCode@proton.me" class="contact-link" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M22 6L12 13L2 6"/>
+            </svg>
         </a>
 
         <div class="footer">© Kingdom Code</div>
