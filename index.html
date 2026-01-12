@@ -39,7 +39,7 @@
         }
 
         .container {
-            max-width: 420px;
+            max-width: 520px;
             width: 100%;
             text-align: center;
         }
@@ -187,6 +187,65 @@
             letter-spacing: 0.05em;
         }
 
+        /* Manifesto Section */
+        .manifesto {
+            text-align: left;
+            padding: 64px 0;
+            margin-bottom: 48px;
+            border-top: 1px solid var(--border);
+        }
+
+        .manifesto-line {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .manifesto-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .manifesto-heading {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 40px;
+            margin-bottom: 24px;
+        }
+
+        .manifesto-highlight {
+            font-size: 1.0625rem;
+            color: var(--text-primary);
+            font-style: italic;
+            padding-left: 16px;
+            border-left: 2px solid var(--accent);
+            margin: 32px 0;
+        }
+
+        .manifesto-action {
+            color: var(--text-primary);
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            margin: 32px 0;
+        }
+
+        .manifesto-close {
+            font-size: 1rem;
+            color: var(--text-primary);
+            text-align: center;
+            font-style: italic;
+            margin-top: 40px;
+            margin-bottom: 0;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -250,6 +309,27 @@
             </div>
         </div>
 
+        <!-- Manifesto Section -->
+        <div class="manifesto">
+            <p class="manifesto-line">The air in the room feels heavy, but the windows are open. It's the sensation of a digital fever. Your eyes ache from tracking blue light, yet you cannot stop the thumb from twitching. You are consuming thousands of words a minute, but your soul is starving.</p>
+            
+            <p class="manifesto-line">We are told we live in a golden age of access. Every book, every lecture, every "expert" is available for the price of a data plan. You believe you are becoming more informed. You believe that by observing the chaos, you are mastering it. You think you are the consumer.</p>
+            
+            <p class="manifesto-line manifesto-highlight">The algorithm knows you are going to be angry at 2:15 PM before you even wake up.</p>
+            
+            <h3 class="manifesto-line manifesto-heading">The Mechanism</h3>
+            
+            <p class="manifesto-line">This is a capture of the human spirit via high-frequency trade. Modern platforms are designed to bypass your prefrontal cortex and go straight for the brainstem. They use "engagement" as a euphemism for addiction. When every piece of content is generated to satisfy a probability curve, reality becomes a hall of mirrors. You are not being informed; you are being terraformed. Your discernment—the ability to tell the difference between a shepherd and a wolf—is being intentionally pruned.</p>
+            
+            <p class="manifesto-line">Nehemiah did not rebuild the walls of Jerusalem with a committee; he did it with a remnant. He stationed men at the gaps with their swords drawn. He knew that an open city is a dead city. Throughout history, the "Age of Noise" has always preceded the "Age of Collapse." The only survivors are those who curate their intake with the precision of a jeweler. They understand that the "Code" of the Kingdom—the ancient, immutable laws of design—is the only map that doesn't change when the fog rolls in.</p>
+            
+            <p class="manifesto-line">The heaviness you feel is the weight of the lie. You have been paying $10 for the privilege of being blinded. You have treated your attention like a cheap commodity rather than a sacred resource. Kingdom Code is the exit ramp. We are not a "content" site. We are an armory. We do not provide information; we provide the whetstone.</p>
+            
+            <p class="manifesto-line manifesto-action">Audit your digital temple. Delete one app that leaves you feeling drained. Replace that time with one chapter of ancient text and ten minutes of silence. Watch how fast the fever breaks.</p>
+            
+            <p class="manifesto-line manifesto-close">In a world of infinite noise, the most radical act is to listen to the silence.</p>
+        </div>
+
         <a href="mailto:KingdomCode@proton.me" class="contact-link" aria-label="Email">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -261,6 +341,7 @@
     </div>
 
     <script>
+        // Tab functionality
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -269,6 +350,28 @@
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.tab).classList.add('active');
             });
+        });
+
+        // Scroll animation for manifesto
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.manifesto-line').forEach((line, index) => {
+            line.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(line);
         });
     </script>
 </body>
