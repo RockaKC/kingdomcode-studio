@@ -245,8 +245,11 @@
 
         <!-- Resources Tab -->
         <div class="tab-content" id="resources">
-            <div class="resources-empty">
-                Coming soon
+            <div class="links">
+                <a href="https://payhip.com/b/aZFOK" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">Winter Protocol</div>
+                    <div class="link-desc">30 days of strategic rest in a burnout culture</div>
+                </a>
             </div>
         </div>
 
@@ -261,6 +264,7 @@
     </div>
 
     <script>
+        // Tab functionality
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
