@@ -220,165 +220,6 @@
             margin: 0 auto;
         }
 
-        /* Latest Essays */
-        .essays-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .essay-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .essay-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .essay-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .essay-card:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--border-light);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-        }
-
-        .essay-date {
-            font-size: 0.875rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .essay-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .essay-excerpt {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Visual Theology Gallery */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            aspect-ratio: 1;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            border-color: var(--accent);
-            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.2);
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
-        .gallery-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            backdrop-filter: blur(8px);
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            max-width: 90vw;
-            max-height: 90vh;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         /* About Section */
         .about-content {
             max-width: 800px;
@@ -511,33 +352,6 @@
             color: var(--text-muted);
         }
 
-        /* Snow Effect */
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999;
-            overflow: hidden;
-        }
-
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            color: var(--accent);
-            opacity: 0.3;
-            font-size: 1rem;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
         /* Noise texture */
         body::before {
             content: '';
@@ -578,11 +392,6 @@
                 padding: 60px 24px;
             }
 
-            .essays-grid,
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 32px;
@@ -596,9 +405,6 @@
     </style>
 </head>
 <body>
-    <!-- Snow Effect -->
-    <div class="snow" id="snow"></div>
-
     <!-- Theme Toggle -->
     <button class="theme-toggle" aria-label="Toggle theme">
         <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -626,75 +432,12 @@
         <h1 class="hero-title">KINGDOM CODE</h1>
         <p class="hero-tagline">Ancient Wisdom for Modern Warfare</p>
         <div class="hero-cta">
-            <a href="#essays" class="btn btn-primary">Read Latest Essays</a>
+            <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read Latest Essays</a>
             <a href="#signup" class="btn btn-secondary">Join 1,900+ Readers</a>
         </div>
     </section>
 
-    <!-- Latest Essays -->
-    <section id="essays">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Latest Essays</h2>
-                <p class="section-subtitle">Deep analysis on theology, culture, and the structures that shape reality</p>
-            </div>
-            <div class="essays-grid">
-                <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="essay-card">
-                    <span class="essay-date">Recent</span>
-                    <h3 class="essay-title">The Structure of Spiritual Warfare</h3>
-                    <p class="essay-excerpt">Understanding the invisible architecture of conflict and how ancient wisdom reveals modern patterns of power.</p>
-                </a>
-                <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="essay-card">
-                    <span class="essay-date">Recent</span>
-                    <h3 class="essay-title">Kingdom Economics</h3>
-                    <p class="essay-excerpt">How divine order restructures our understanding of value, exchange, and abundance in a scarcity-driven world.</p>
-                </a>
-                <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="essay-card">
-                    <span class="essay-date">Recent</span>
-                    <h3 class="essay-title">Visual Theology</h3>
-                    <p class="essay-excerpt">Comics and visual narratives as carriers of theological truth in an image-saturated culture.</p>
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Visual Theology Preview -->
-    <section id="gallery" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Visual Theology</h2>
-                <p class="section-subtitle">Comic art meets ancient wisdom</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openModal(this)">
-                    <div class="gallery-placeholder">Panel 01</div>
-                </div>
-                <div class="gallery-item" onclick="openModal(this)">
-                    <div class="gallery-placeholder">Panel 02</div>
-                </div>
-                <div class="gallery-item" onclick="openModal(this)">
-                    <div class="gallery-placeholder">Panel 03</div>
-                </div>
-                <div class="gallery-item" onclick="openModal(this)">
-                    <div class="gallery-placeholder">Panel 04</div>
-                </div>
-                <div class="gallery-item" onclick="openModal(this)">
-                    <div class="gallery-placeholder">Panel 05</div>
-                </div>
-                <div class="gallery-item" onclick="openModal(this)">
-                    <div class="gallery-placeholder">Panel 06</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div id="modal-image"></div>
-        </div>
-    </div>
 
     <!-- What Is Kingdom Code -->
     <section id="about">
@@ -799,47 +542,6 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // Snow effect
-        function createSnowflake() {
-            const snow = document.getElementById('snow');
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.innerHTML = '❄';
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.animationDuration = (Math.random() * 3 + 5) + 's';
-            snowflake.style.opacity = Math.random() * 0.3 + 0.1;
-            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
-
-            snow.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 8000);
-        }
-
-        // Create snowflakes periodically
-        setInterval(createSnowflake, 300);
-
-        // Gallery modal
-        function openModal(element) {
-            const modal = document.getElementById('modal');
-            const modalImage = document.getElementById('modal-image');
-            modalImage.innerHTML = element.innerHTML;
-            modal.classList.add('active');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.remove('active');
-        }
-
-        // Close modal on background click
-        document.getElementById('modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
         // Fade in animations on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -854,7 +556,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.essay-card, .gallery-item, .framework-item').forEach(el => {
+        document.querySelectorAll('.framework-item').forEach(el => {
             observer.observe(el);
         });
     </script>
