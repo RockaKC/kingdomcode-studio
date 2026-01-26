@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kingdom Code - Ancient Wisdom for Modern Warfare. Intelligence on how the world actually works.">
-    <title>Kingdom Code - Ancient Wisdom for Modern Warfare</title>
+    <meta name="description" content="Kingdom Code - Intelligence on how the world actually works.">
+    <title>Kingdom Code</title>
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -38,25 +38,50 @@
             --border-light: #a1a1aa;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 24px;
         }
 
-        /* Theme Toggle */
+        .container {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .tagline {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+
         .theme-toggle {
             position: fixed;
             top: 24px;
             right: 24px;
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             border-radius: 50%;
@@ -66,7 +91,6 @@
             justify-content: center;
             color: var(--text-muted);
             transition: all 0.2s ease;
-            z-index: 1000;
         }
 
         .theme-toggle:hover {
@@ -80,44 +104,13 @@
         [data-theme="light"] .theme-toggle .sun { display: block; }
         [data-theme="light"] .theme-toggle .moon { display: none; }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 24px 80px;
-            position: relative;
-        }
-
-        .hero-logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 24px;
-        }
-
         .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: var(--accent);
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 0 12px var(--accent);
+            box-shadow: 0 0 8px var(--accent);
         }
 
         @keyframes pulse {
@@ -131,228 +124,117 @@
             }
         }
 
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-tagline {
-            font-size: clamp(1.125rem, 3vw, 1.5rem);
-            color: var(--text-secondary);
-            font-style: italic;
-            margin-bottom: 48px;
-            max-width: 600px;
-        }
-
-        .hero-cta {
+        /* Tabs */
+        .tabs {
             display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
             justify-content: center;
-            align-items: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--border-light);
-            transform: translateY(-2px);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 80px 24px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-text {
-            font-size: 1.125rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
+            gap: 8px;
             margin-bottom: 32px;
         }
 
-        .frameworks {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin: 48px 0;
-        }
-
-        .framework-item {
-            padding: 24px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .framework-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .framework-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-
-        .framework-desc {
-            font-size: 0.9375rem;
+        .tab {
+            padding: 10px 20px;
+            font-size: 0.8125rem;
+            font-weight: 500;
             color: var(--text-muted);
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        /* Email Signup */
-        .signup {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 64px 32px;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .signup-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .signup-count {
-            font-size: 1.125rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .signup-text {
-            font-size: 1rem;
+        .tab:hover {
             color: var(--text-secondary);
-            margin-bottom: 32px;
         }
 
-        /* Footer */
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            padding: 48px 24px 32px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 48px;
-            margin-bottom: 32px;
-        }
-
-        .footer-section h3 {
-            font-size: 1rem;
-            font-weight: 600;
+        .tab.active {
             color: var(--accent);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            background: var(--bg-secondary);
+            border-color: var(--border);
         }
 
-        .footer-links {
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .links {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            margin-bottom: 48px;
         }
 
-        .footer-link {
-            color: var(--text-secondary);
+        .link-card {
+            display: block;
+            padding: 18px 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.9375rem;
-            transition: color 0.2s ease;
+            transition: all 0.25s ease;
         }
 
-        .footer-link:hover {
-            color: var(--accent);
+        .link-card:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            font-size: 0.875rem;
+        .link-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .link-desc {
+            font-size: 0.8125rem;
             color: var(--text-muted);
         }
 
-        /* Noise texture */
+        /* Resources placeholder */
+        .resources-empty {
+            padding: 48px 24px;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            margin-bottom: 48px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: color 0.2s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
+        .footer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -363,54 +245,15 @@
             pointer-events: none;
             opacity: 0.015;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            z-index: 1;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 100px 24px 60px;
-            }
-
-            section {
-                padding: 60px 24px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Theme Toggle -->
     <button class="theme-toggle" aria-label="Toggle theme">
-        <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
-        <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/>
             <line x1="12" y1="21" x2="12" y2="23"/>
@@ -423,92 +266,90 @@
         </svg>
     </button>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1 class="hero-title">KINGDOM CODE</h1>
-        <p class="hero-tagline">Ancient Wisdom for Modern Warfare</p>
-        <div class="hero-cta">
-            <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Kingdom Code</a>
-            <a href="https://kingdomcodegaming.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Kingdom Code Gaming</a>
-            <a href="https://patreon.com/KingdomCode" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Patreon</a>
+    <div class="container">
+        <div class="logo">
+            <span class="status-dot"></span>
+            Kingdom Code
         </div>
-    </section>
 
+        <p class="tagline">Ancient wisdom for modern warfare</p>
 
-
-    <!-- What Is Kingdom Code -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What Is Kingdom Code?</h2>
-            </div>
-            <div class="about-content">
-                <p class="about-text">
-                    Kingdom Code is intelligence on how the world actually works. We decode the hidden structures of power, culture, and spiritual reality through the lens of ancient wisdom. This isn't theory—it's tactical theology for those who see beyond the surface.
-                </p>
-                <a href="https://kingdomcode.substack.com/about" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Learn More</a>
-            </div>
+        <div class="tabs">
+            <button class="tab active" data-tab="publications">Publications</button>
+            <button class="tab" data-tab="support">Support</button>
+            <button class="tab" data-tab="resources">Resources</button>
         </div>
-    </section>
 
-    <!-- Email Signup -->
-    <section id="signup">
-        <div class="container">
-            <div class="signup">
-                <h2 class="signup-title">Enter the Kingdom</h2>
-                <p class="signup-count">Join 1,900+ Readers</p>
-                <p class="signup-text">Get tactical theology and structural analysis delivered weekly. No fluff, just intelligence.</p>
-                <a href="https://kingdomcode.substack.com/subscribe" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Subscribe Now</a>
+        <!-- Publications Tab -->
+        <div class="tab-content active" id="publications">
+            <div class="links">
+                <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">Kingdom Code</div>
+                    <div class="link-desc">Main publication on theology and culture</div>
+                </a>
+
+                <a href="https://kingdomcodegaming.substack.com/" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">Kingdom Code: Gaming</div>
+                    <div class="link-desc">Autopsy and resurrection</div>
+                </a>
+
+                <a href="https://patreon.com/KingdomCode" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">Become a Patron</div>
+                    <div class="link-desc">Premium analysis and early access</div>
+                </a>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Publications</h3>
-                <div class="footer-links">
-                    <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-link">Kingdom Code</a>
-                    <a href="https://kingdomcodegaming.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-link">Kingdom Code: Gaming</a>
-                    <a href="https://patreon.com/KingdomCode" target="_blank" rel="noopener noreferrer" class="footer-link">Patreon</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <div class="footer-links">
-                    <a href="https://payhip.com/b/aZFOK" target="_blank" rel="noopener noreferrer" class="footer-link">Winter Protocol</a>
-                    <a href="https://payhip.com/b/ZW5Ej" target="_blank" rel="noopener noreferrer" class="footer-link">Retention Field Manual</a>
-                    <a href="https://payhip.com/b/BaYmh" target="_blank" rel="noopener noreferrer" class="footer-link">Structural Anxiety Guide</a>
-                    <a href="https://payhip.com/b/ST6AX" target="_blank" rel="noopener noreferrer" class="footer-link">Tactical Reading Protocol</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Support</h3>
-                <div class="footer-links">
-                    <a href="https://ko-fi.com/kingdomcode/tip" target="_blank" rel="noopener noreferrer" class="footer-link">Ko-fi</a>
-                    <a href="https://patreon.com/KingdomCode" target="_blank" rel="noopener noreferrer" class="footer-link">Become a Patron</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <div class="footer-links">
-                    <a href="mailto:KingdomCode@proton.me" class="footer-link">Email</a>
-                    <a href="https://kingdomcode.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-link">Substack</a>
-                </div>
+        <!-- Support Tab -->
+        <div class="tab-content" id="support">
+            <div class="links">
+                <a href="https://ko-fi.com/kingdomcode/tip" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">One-Time Support</div>
+                    <div class="link-desc">Sustain the signal</div>
+                </a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div>© 2026 Kingdom Code. All rights reserved.</div>
-            <div>Ancient Wisdom for Modern Warfare</div>
+
+        <!-- Resources Tab -->
+        <div class="tab-content" id="resources">
+            <div class="links">
+                <a href="https://payhip.com/b/aZFOK" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">Winter Protocol</div>
+                    <div class="link-desc">30 days of strategic rest in a burnout culture</div>
+                </a>
+
+                <a href="https://payhip.com/b/ZW5Ej" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">The Retention Field Manual</div>
+                    <div class="link-desc">$10</div>
+                </a>
+
+                <a href="https://payhip.com/b/BaYmh" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">How Structural Anxiety Generates Thought Patterns</div>
+                    <div class="link-desc">Digital guide</div>
+                </a>
+
+                <a href="https://payhip.com/b/ST6AX" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-title">Tactical Reading Protocol</div>
+                    <div class="link-desc">Digital guide</div>
+                </a>
+            </div>
         </div>
-    </footer>
+
+        <a href="mailto:KingdomCode@proton.me" class="contact-link" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M22 6L12 13L2 6"/>
+            </svg>
+        </a>
+
+        <div class="footer">© Kingdom Code</div>
+    </div>
 
     <script>
         // Theme toggle
         const themeToggle = document.querySelector('.theme-toggle');
         const savedTheme = localStorage.getItem('theme') || 'dark';
-
+        
         if (savedTheme === 'light') {
             document.documentElement.setAttribute('data-theme', 'light');
         }
@@ -516,27 +357,20 @@
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
+            
             document.documentElement.setAttribute('data-theme', newTheme === 'light' ? 'light' : '');
             localStorage.setItem('theme', newTheme);
         });
 
-        // Fade in animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.framework-item').forEach(el => {
-            observer.observe(el);
         });
     </script>
 </body>
