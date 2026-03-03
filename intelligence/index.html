@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kingdom Code Intelligence Archive — documented essays on theology, culture, and how power actually moves.">
+    <title>Intelligence Archive | Kingdom Code</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #111113;
+            --bg-tertiary: #18181b;
+            --text-primary: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #d4a574;
+            --accent-hover: #e5b885;
+            --border: #27272a;
+            --border-light: #3f3f46;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #fafafa;
+            --bg-secondary: #f4f4f5;
+            --bg-tertiary: #e4e4e7;
+            --text-primary: #18181b;
+            --text-secondary: #3f3f46;
+            --text-muted: #71717a;
+            --accent: #b8860b;
+            --accent-hover: #996515;
+            --border: #d4d4d8;
+            --border-light: #a1a1aa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 48px 24px 80px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.015;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .page {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+            border-color: var(--border-light);
+        }
+
+        .theme-toggle .sun { display: none; }
+        .theme-toggle .moon { display: block; }
+        [data-theme="light"] .theme-toggle .sun { display: block; }
+        [data-theme="light"] .theme-toggle .moon { display: none; }
+
+        /* Back nav */
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 48px;
+            transition: color 0.2s ease;
+        }
+
+        .back-nav:hover {
+            color: var(--accent);
+        }
+
+        /* Archive header */
+        .archive-header {
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .classification-line {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6875rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .classification-line span {
+            color: var(--accent);
+        }
+
+        .archive-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .archive-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-style: italic;
+            max-width: 480px;
+        }
+
+        /* Report count */
+        .report-count {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        /* Report cards */
+        .reports {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .report-card {
+            display: block;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .report-card:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .report-card:hover .report-title {
+            color: var(--accent);
+        }
+
+        .report-card:hover .read-link {
+            color: var(--accent);
+            gap: 8px;
+        }
+
+        .report-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+
+        .report-id {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            opacity: 0.75;
+        }
+
+        .report-date {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .report-status {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.5625rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        .report-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .report-brief {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            max-width: 520px;
+            margin-bottom: 20px;
+        }
+
+        .read-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .read-link svg {
+            transition: transform 0.2s ease;
+        }
+
+        .report-card:hover .read-link svg {
+            transform: translateX(2px);
+        }
+
+        /* Empty state */
+        .empty-state {
+            padding: 48px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            text-align: center;
+            border: 1px dashed var(--border);
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        .archive-footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-brand {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+    </button>
+
+    <div class="page">
+        <a href="../" class="back-nav" aria-label="Back to Kingdom Code">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            Kingdom Code
+        </a>
+
+        <header class="archive-header">
+            <p class="classification-line">Kingdom Code // <span>Intelligence Archive</span> // Open Access</p>
+            <h1 class="archive-title">Intelligence Archive</h1>
+            <p class="archive-desc">Documented essays on theology, power, culture, and how the world actually moves. Permanent record. No algorithm required.</p>
+        </header>
+
+        <p class="report-count" id="report-count">— Filed Reports —</p>
+
+        <div class="reports" id="reports-list">
+
+            <!-- REPORT KC-001 -->
+            <a href="penemue-protocol.html" class="report-card">
+                <div class="report-meta">
+                    <span class="report-id">KC-001</span>
+                    <span class="report-date">March 2026</span>
+                    <span class="report-status">Filed</span>
+                </div>
+                <h2 class="report-title">The Penemue Protocol</h2>
+                <p class="report-brief">The angel who taught humans to write — and what that means for every word you publish in the age of algorithmic platforms.</p>
+                <span class="read-link">
+                    Read Document
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </span>
+            </a>
+
+            <!-- ADD FUTURE REPORTS ABOVE THIS LINE -->
+            <!-- Copy the report-card block above and increment the KC-00X number -->
+
+        </div>
+
+        <footer class="archive-footer">
+            <span class="footer-brand"><span>Kingdom Code</span> // Intelligence Archive</span>
+            <span class="footer-copy">© Kingdom Code</span>
+        </footer>
+    </div>
+
+    <script>
+        // Sync theme with main site preference
+        const themeToggle = document.querySelector('.theme-toggle');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme === 'light' ? 'light' : '');
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Update report count
+        const cards = document.querySelectorAll('.report-card');
+        const countEl = document.getElementById('report-count');
+        if (cards.length > 0) {
+            const label = cards.length === 1 ? 'Filed Report' : 'Filed Reports';
+            countEl.textContent = `— ${cards.length} ${label} —`;
+        }
+    </script>
+</body>
+</html>
