@@ -20,6 +20,7 @@
       --rule-kc:   rgba(184,144,74,0.18);
       --rule-kcg:  rgba(78,138,120,0.18);
       --pat:       #c45e2a;
+      --dig:       #7b68a0;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -190,6 +191,7 @@
     .pub-card.kc::before  { background: var(--kc); }
     .pub-card.kcg::before { background: var(--kcg); }
     .pub-card.pat::before { background: var(--pat); }
+    .pub-card.dig::before { background: var(--dig); }
 
     .pub-card:hover::before { height: 100%; }
 
@@ -220,6 +222,7 @@
     .pub-card.kc  .pub-tag { color: var(--kc);  border-color: rgba(184,144,74,0.25); }
     .pub-card.kcg .pub-tag { color: var(--kcg); border-color: rgba(78,138,120,0.25); }
     .pub-card.pat .pub-tag { color: var(--pat); border-color: rgba(196,94,42,0.25); }
+    .pub-card.dig .pub-tag { color: var(--dig); border-color: rgba(123,104,160,0.25); }
 
     .pub-name {
       font-family: 'Cormorant SC', serif;
@@ -258,6 +261,7 @@
     .pub-card:hover.kc  .pub-cta { color: var(--kc); }
     .pub-card:hover.kcg .pub-cta { color: var(--kcg); }
     .pub-card:hover.pat .pub-cta { color: var(--pat); }
+    .pub-card:hover.dig .pub-cta { color: var(--dig); }
 
     /* Email icon */
     .email-link {
@@ -382,7 +386,7 @@
     <div class="divider r r4"></div>
 
     <div class="about r r5">
-      <p>Rocka is a gamer and a student of history who kept noticing the same pattern in two very different places: inherited assumptions doing work that evidence never earned. KingdomCode pulls on that thread in theology and canon history. KingdomCode Gaming pulls on it in the systems behind modern games. Independent. No agenda beyond the analysis.</p>
+      <p>Rocka is an independent analyst and writer. Two publications, one lens: the systems designed to extract from you are easier to see once you know what you're looking at. KingdomCode applies that to church history and canon. KingdomCode Gaming applies it to the industry behind your screen. The goal is simple, give people the tools to think clearly about both.</p>
     </div>
 
     <div class="publications">
@@ -414,9 +418,18 @@
         <span class="pub-cta">Become a supporter <span class="arrow">→</span></span>
       </a>
 
+      <a href="https://payhip.com/KingdomCode" target="_blank" rel="noopener" class="pub-card dig r r8">
+        <div class="pub-meta">
+          <span class="pub-tag">Store</span>
+          <span class="pub-name">Digital Products</span>
+        </div>
+        <p class="pub-desc">Guides, references, and resources from the Kingdom Code archive. Built for people who want the tools, not just the takes.</p>
+        <span class="pub-cta">Browse the store <span class="arrow">→</span></span>
+      </a>
+
     </div>
 
-    <div class="forthcoming r r8">
+    <div class="forthcoming r r9">
       <div class="section-label">Forthcoming</div>
       <ul class="coming-list">
         <li class="coming-item">
@@ -434,7 +447,7 @@
       </ul>
     </div>
 
-    <footer class="r r9">
+    <footer class="r r9" style="animation-delay:1.2s">
       <span class="mono">kingdomcodearchive.com</span>
       <div class="dot"></div>
       <span class="mono">Rocka</span>
