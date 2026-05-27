@@ -329,6 +329,81 @@
       flex-shrink: 0;
     }
 
+    /* Contact form */
+    .contact {
+      padding: 52px 0 64px;
+      border-top: 1px solid var(--faint);
+    }
+
+    .field-group {
+      margin-bottom: 24px;
+    }
+
+    .field-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      font-size: 0.55rem;
+      letter-spacing: 0.28em;
+      color: #352e25;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .field-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--faint);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 8px 0;
+      outline: none;
+      transition: border-color 0.3s ease;
+      resize: none;
+    }
+
+    .field-input:focus { border-bottom-color: var(--kc); }
+
+    .field-textarea { min-height: 100px; }
+
+    .form-submit {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--faint);
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: color 0.3s ease, border-color 0.3s ease;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover { color: var(--kc); border-color: rgba(184,144,74,0.4); }
+    .form-submit:disabled { opacity: 0.4; cursor: default; }
+
+    .form-success {
+      font-size: 0.95rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--kcg);
+    }
+
+    .form-error,
+    .field-error {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.1em;
+      color: var(--pat);
+      margin-top: 6px;
+    }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--faint);
@@ -447,6 +522,27 @@
       </ul>
     </div>
 
+    <div class="contact">
+      <div class="section-label">Contact</div>
+
+      <div data-fs-success class="form-success"></div>
+      <div data-fs-error class="form-error"></div>
+
+      <form id="contact-form">
+        <div class="field-group">
+          <label class="field-label" for="email">Email</label>
+          <input type="email" id="email" name="email" class="field-input" data-fs-field required />
+          <span data-fs-error="email" class="field-error"></span>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="message">Message</label>
+          <textarea id="message" name="message" class="field-input field-textarea" data-fs-field required></textarea>
+          <span data-fs-error="message" class="field-error"></span>
+        </div>
+        <button type="submit" class="form-submit" data-fs-submit-btn>Send</button>
+      </form>
+    </div>
+
     <footer class="r r9" style="animation-delay:1.2s">
       <span class="mono">kingdomcodearchive.com</span>
       <div class="dot"></div>
@@ -454,6 +550,12 @@
     </footer>
 
   </div>
+
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'xeedvrde' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
