@@ -3,322 +3,370 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kingdom Code</title>
-  <meta name="description" content="Kingdom Code — Independent publications on history, theology, culture, and gaming.">
+  <title>Kingdom Code — Independent Investigation</title>
+  <meta name="description" content="Independent investigation of Christianity, history, canon, and culture.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:      #080705;
-      --surface: #0D0C09;
-      --text:    #DDD5BE;
-      --muted:   #6B5F4E;
-      --faint:   #1A1610;
-      --pale:    #141109;
-      --bronze:  #C8A040;
-      --olive:   #4A8A5A;
-      --kc:      #C8A040;
-      --kcg:     #4A8A5A;
-      --pat:     #A83830;
-      --dig:     #7870A0;
+      --bg:       #F4F0E6;
+      --surface:  #EDE8DA;
+      --border:   #D2C9B6;
+      --text:     #26221D;
+      --muted:    #685E50;
+      --faint:    #B5A898;
+      --bronze:   #8A6C38;
+      --olive:    #586848;
+      --red:      #8A3828;
+      --kcg:      #486858;
+      --dig:      #6C6898;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--text);
       font-family: 'Cormorant Garamond', Georgia, serif;
       min-height: 100vh;
-      overflow-x: hidden;
     }
 
-    /* Top rule */
-    .top-line {
-      height: 1px;
-      background: var(--bronze);
-      opacity: 0.4;
-    }
-
-    /* Fade-in animation */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .r { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
-    .r1 { animation-delay: 0.1s; }
-    .r2 { animation-delay: 0.25s; }
-    .r3 { animation-delay: 0.4s; }
-    .r4 { animation-delay: 0.55s; }
-    .r5 { animation-delay: 0.65s; }
-    .r6 { animation-delay: 0.75s; }
-    .r7 { animation-delay: 0.85s; }
-    .r8 { animation-delay: 0.95s; }
-    .r9 { animation-delay: 1.05s; }
-
-    /* Layout */
     .wrapper {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 0 36px;
+      padding: 0 40px;
     }
 
-    /* Topbar */
+    /* --- Utilities --- */
+    .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      font-size: 0.5rem;
+      letter-spacing: 0.3em;
+      color: var(--faint);
+      text-transform: uppercase;
+    }
+
+    /* --- Topbar --- */
     .topbar {
-      padding: 36px 0 0;
+      padding: 30px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid var(--border);
     }
 
-    .mono {
+    .topbar-name {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-    }
-
-    .topbar .mono {
-      font-size: 0.56rem;
-      letter-spacing: 0.16em;
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
       color: var(--muted);
       text-transform: uppercase;
     }
 
-    /* Hero */
+    .topbar-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .topbar-link {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      font-size: 0.5rem;
+      letter-spacing: 0.18em;
+      color: var(--faint);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .topbar-link:hover { color: var(--bronze); }
+
+    /* --- Hero --- */
     .hero {
-      padding: 84px 0 76px;
+      padding: 76px 0 68px;
       text-align: center;
     }
 
-    .hero-label {
+    .hero-eyebrow {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.54rem;
-      letter-spacing: 0.3em;
-      color: var(--muted);
+      font-size: 0.5rem;
+      letter-spacing: 0.34em;
+      color: var(--faint);
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
-    h1.title {
+    .hero-wordmark {
       font-family: 'Cormorant SC', serif;
       font-weight: 300;
-      font-size: clamp(3rem, 11vw, 5.2rem);
-      letter-spacing: 0.08em;
-      line-height: 1.08;
+      font-size: clamp(3.4rem, 13vw, 6.2rem);
+      letter-spacing: 0.1em;
+      line-height: 1;
       color: var(--text);
+      margin-bottom: 36px;
     }
 
-    h1.title .accent { color: var(--bronze); }
+    .hero-wordmark .accent { color: var(--bronze); }
 
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: var(--faint);
-      position: relative;
-    }
-
-    .divider::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 0;
-      width: 48px;
+    .hero-rule {
+      width: 44px;
       height: 1px;
       background: var(--bronze);
-      opacity: 0.55;
-    }
-
-    /* About */
-    .about {
-      padding: 52px 0 56px;
-      border-bottom: 1px solid var(--faint);
-    }
-
-    .about p {
-      font-size: clamp(1.05rem, 3vw, 1.18rem);
-      font-weight: 300;
-      line-height: 1.9;
-      color: var(--muted);
-    }
-
-    /* Publications */
-    .publications { padding: 52px 0 8px; }
-
-    .pub-card {
-      display: block;
-      padding: 38px 0;
-      border-top: 1px solid var(--faint);
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      transition: border-color 0.35s ease;
-      overflow: hidden;
-    }
-
-    .pub-card::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 2px;
-      height: 0;
-      transition: height 0.35s ease;
-    }
-
-    .pub-card.kc::before  { background: var(--kc); }
-    .pub-card.kcg::before { background: var(--kcg); }
-    .pub-card.pat::before { background: var(--pat); }
-    .pub-card.dig::before { background: var(--dig); }
-
-    .pub-card:hover::before { height: 100%; }
-    .pub-card:hover { border-color: transparent; }
-    .pub-card:last-child { border-bottom: 1px solid var(--faint); }
-
-    .pub-meta {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .pub-tag {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 400;
-      font-size: 0.5rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border: 1px solid;
-      line-height: 1.6;
-    }
-
-    .pub-card.kc  .pub-tag { color: var(--kc);  border-color: rgba(158,123,74,0.3); }
-    .pub-card.kcg .pub-tag { color: var(--kcg); border-color: rgba(92,122,110,0.3); }
-    .pub-card.pat .pub-tag { color: var(--pat); border-color: rgba(154,85,53,0.3); }
-    .pub-card.dig .pub-tag { color: var(--dig); border-color: rgba(108,104,152,0.3); }
-
-    .pub-name {
-      font-family: 'Cormorant SC', serif;
-      font-weight: 400;
-      font-size: clamp(1.3rem, 4vw, 1.65rem);
-      letter-spacing: 0.04em;
-      color: var(--text);
-    }
-
-    .pub-desc {
-      font-size: clamp(0.95rem, 2.5vw, 1.06rem);
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--muted);
-      padding-left: 2px;
-    }
-
-    .pub-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 300;
-      font-size: 0.56rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: color 0.3s ease;
-      color: #241E12;
-    }
-
-    .pub-card:hover.kc  .pub-cta { color: var(--kc); }
-    .pub-card:hover.kcg .pub-cta { color: var(--kcg); }
-    .pub-card:hover.pat .pub-cta { color: var(--pat); }
-    .pub-card:hover.dig .pub-cta { color: var(--dig); }
-
-    .pub-cta .arrow {
-      display: inline-block;
-      transition: transform 0.3s ease;
-      font-size: 0.75rem;
-      font-family: serif;
-    }
-
-    .pub-card:hover .pub-cta .arrow { transform: translateX(4px); }
-
-    /* Email icon */
-    .email-link {
-      display: flex;
-      align-items: center;
-      color: var(--muted);
-      transition: color 0.3s ease;
       opacity: 0.5;
+      margin: 0 auto 32px;
     }
-    .email-link:hover { color: var(--bronze); opacity: 1; }
-    .email-link svg { width: 14px; height: 14px; }
 
-    /* Forthcoming */
-    .forthcoming { padding: 52px 0 64px; }
-
-    .section-label {
-      font-family: 'IBM Plex Mono', monospace;
+    .hero-position {
+      font-size: clamp(1.05rem, 3vw, 1.22rem);
       font-weight: 300;
-      font-size: 0.5rem;
-      letter-spacing: 0.3em;
-      color: #2E2618;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto 14px;
     }
 
-    .coming-list { list-style: none; }
+    .hero-tagline {
+      font-size: 0.98rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--faint);
+    }
 
-    .coming-item {
+    /* --- Sections --- */
+    .section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 16px;
-      padding: 13px 0;
-      border-top: 1px solid var(--pale);
-      font-size: 0.95rem;
-      font-weight: 300;
-      font-style: italic;
-      color: #2E2618;
+      margin-bottom: 32px;
     }
 
-    .coming-item:last-child { border-bottom: 1px solid var(--pale); }
-
-    .coming-item .tag {
+    .section-link {
       font-family: 'IBM Plex Mono', monospace;
-      font-style: normal;
+      font-weight: 300;
       font-size: 0.48rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
+      color: var(--faint);
+      text-decoration: none;
       text-transform: uppercase;
-      color: #241E12;
+      transition: color 0.2s;
+    }
+    .section-link:hover { color: var(--bronze); }
+
+    /* --- Current Investigation --- */
+    .investigation-card {
+      display: block;
+      padding: 36px;
+      background: var(--surface);
+      border-left: 2px solid var(--bronze);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.25s;
+    }
+    .investigation-card:hover { background: #E8E2D2; }
+
+    .investigation-vol {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      font-size: 0.48rem;
+      letter-spacing: 0.26em;
+      color: var(--bronze);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .investigation-title {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 400;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .investigation-desc {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.82;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .investigation-cta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      font-size: 0.54rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: gap 0.2s;
+    }
+    .investigation-card:hover .investigation-cta { gap: 14px; }
+
+    /* --- Research Volumes --- */
+    .volume-list { list-style: none; }
+
+    .volume-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+    }
+    .volume-item:last-child { border-bottom: 1px solid var(--border); }
+    .volume-item:hover { opacity: 0.65; }
+
+    .volume-num {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      color: var(--bronze);
+      text-transform: uppercase;
+      padding-top: 3px;
+    }
+
+    .volume-name {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 400;
+      font-size: 1.12rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .volume-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--muted);
+    }
+
+    /* --- Reading Paths --- */
+    .path-list { list-style: none; }
+
+    .path-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      padding: 17px 0;
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+    }
+    .path-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .path-title {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .path-item:hover .path-title { color: var(--bronze); }
+
+    .path-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      font-size: 0.46rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--faint);
+      white-space: nowrap;
       flex-shrink: 0;
     }
 
-    /* Subscribe */
-    .subscribe {
-      padding: 52px 0 64px;
-      border-top: 1px solid var(--faint);
+    /* --- Also from Rocka --- */
+    .pub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
     }
 
+    .pub-tile {
+      display: block;
+      padding: 28px 24px;
+      background: var(--bg);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.22s;
+    }
+    .pub-tile:hover { background: var(--surface); }
+
+    .pub-tile:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+
+    .pub-tile-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      font-size: 0.46rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .pub-tile-name {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pub-tile-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.68;
+      color: var(--muted);
+    }
+
+    .pub-tile.kcg .pub-tile-tag { color: var(--kcg); }
+    .pub-tile.pat .pub-tile-tag { color: var(--red); }
+    .pub-tile.dig .pub-tile-tag { color: var(--dig); }
+
+    /* --- About --- */
+    .about-text {
+      font-size: clamp(1.05rem, 3vw, 1.18rem);
+      font-weight: 300;
+      line-height: 1.92;
+      color: var(--muted);
+    }
+
+    /* --- Subscribe --- */
     .subscribe-tagline {
-      font-size: clamp(1rem, 3vw, 1.15rem);
+      font-size: 1.08rem;
       font-weight: 300;
       font-style: italic;
       color: var(--muted);
-      line-height: 1.8;
+      line-height: 1.75;
       margin-bottom: 28px;
     }
 
     .subscribe-row {
       display: flex;
-      border: 1px solid var(--faint);
-      transition: border-color 0.3s ease;
+      border: 1px solid var(--border);
+      transition: border-color 0.25s;
     }
-
-    .subscribe-row:focus-within { border-color: rgba(158,123,74,0.45); }
+    .subscribe-row:focus-within { border-color: var(--bronze); }
 
     .subscribe-input {
       flex: 1;
@@ -328,35 +376,32 @@
       color: var(--text);
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.63rem;
+      font-size: 0.62rem;
       letter-spacing: 0.08em;
       padding: 14px 16px;
     }
-
-    .subscribe-input::placeholder { color: #2E2618; }
+    .subscribe-input::placeholder { color: var(--faint); }
 
     .subscribe-btn {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.5rem;
-      letter-spacing: 0.22em;
+      font-size: 0.48rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--muted);
       background: transparent;
       border: none;
-      border-left: 1px solid var(--faint);
+      border-left: 1px solid var(--border);
       padding: 14px 20px;
       cursor: pointer;
-      transition: color 0.3s ease;
+      transition: color 0.25s;
       white-space: nowrap;
     }
-
     .subscribe-btn:hover { color: var(--bronze); }
     .subscribe-btn:disabled { opacity: 0.4; cursor: default; }
 
     .subscribe-success {
       font-size: 0.95rem;
-      font-weight: 300;
       font-style: italic;
       color: var(--olive);
     }
@@ -364,131 +409,187 @@
     .subscribe-error {
       display: block;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.5rem;
+      font-size: 0.48rem;
       letter-spacing: 0.1em;
-      color: var(--pat);
+      color: var(--red);
       margin-top: 10px;
     }
 
-    /* Footer */
+    /* --- Footer --- */
     footer {
-      border-top: 1px solid var(--faint);
       padding: 28px 0 52px;
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-    }
-
-    footer .mono {
-      font-size: 0.5rem;
-      letter-spacing: 0.16em;
-      color: #2E2618;
-      text-transform: uppercase;
     }
 
     footer .dot {
       width: 3px;
       height: 3px;
       border-radius: 50%;
-      background: #2E2618;
-      flex-shrink: 0;
+      background: var(--faint);
     }
 
-    @media (max-width: 480px) {
-      .wrapper { padding: 0 24px; }
-      .hero { padding: 60px 0 56px; }
-      .topbar .mono:last-child { display: none; }
+    /* --- Mobile --- */
+    @media (max-width: 560px) {
+      .wrapper { padding: 0 22px; }
+      .hero { padding: 52px 0 48px; }
+      .volume-item { grid-template-columns: 72px 1fr; gap: 14px; }
+      .pub-grid { grid-template-columns: 1fr; }
+      .investigation-card { padding: 24px 20px; }
+      .topbar-links .topbar-link:first-child { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <div class="top-line"></div>
-
   <div class="wrapper">
 
-    <div class="topbar r r1">
-      <span class="mono">Ancient roots. Digital age discernment.</span>
-      <a href="mailto:contact@kingdomcodearchive.com" class="email-link" title="Contact">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="2"/>
-          <path d="M2 7l10 7 10-7"/>
-        </svg>
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <span class="topbar-name">Kingdom Code</span>
+      <nav class="topbar-links">
+        <a href="https://kingdomcode.substack.com/archive" target="_blank" rel="noopener" class="topbar-link">Archive</a>
+        <a href="mailto:contact@kingdomcodearchive.com" class="topbar-link">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-eyebrow">Independent Publication</div>
+      <h1 class="hero-wordmark">Kingdom<br><span class="accent">Code</span></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-position">Independent investigation of Christianity, history, canon, and culture.</p>
+      <p class="hero-tagline">Following questions wherever the evidence leads.</p>
+    </section>
+
+    <!-- CURRENT INVESTIGATION -->
+    <section class="section">
+      <div class="section-header">
+        <span class="label">Current Investigation</span>
+        <a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="section-link">View archive →</a>
+      </div>
+
+      <!-- UPDATE: Change href, title, and description to your latest featured essay -->
+      <a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="investigation-card">
+        <div class="investigation-vol">Kingdom Code · Vol. I</div>
+        <h2 class="investigation-title">The Ethiopian Orthodox Canon and the Question of Biblical Closure</h2>
+        <p class="investigation-desc">Most discussions of the biblical canon treat its formation as a largely Western story. The Ethiopian Orthodox Tewahedo Church preserves a tradition that predates many of those discussions — and raises questions that Western scholarship has rarely been forced to answer.</p>
+        <span class="investigation-cta">Read investigation →</span>
       </a>
-    </div>
+    </section>
 
-    <div class="hero">
-      <div class="hero-label r r2">Independent Investigation</div>
-      <h1 class="title r r3">Kingdom<br><span class="accent">Code</span></h1>
-    </div>
+    <!-- RESEARCH VOLUMES -->
+    <section class="section">
+      <div class="section-header">
+        <span class="label">Research Collections</span>
+        <a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="section-link">Browse all →</a>
+      </div>
 
-    <div class="divider r r4"></div>
-
-    <div class="about r r5">
-      <p>Rocka is an independent analyst exploring how ancient texts, historical memory, and modern systems shape the world we live in.</p>
-    </div>
-
-    <div class="publications">
-
-      <a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="pub-card kc r r6">
-        <div class="pub-meta">
-          <span class="pub-tag">Vol. I</span>
-          <span class="pub-name">KingdomCode</span>
-        </div>
-        <p class="pub-desc">Exploring history, theology, and culture through one of Christianity's oldest and most complete biblical traditions.</p>
-        <span class="pub-cta">Read the archive <span class="arrow">→</span></span>
-      </a>
-
-      <a href="https://kingdomcodegaming.substack.com" target="_blank" rel="noopener" class="pub-card kcg r r6">
-        <div class="pub-meta">
-          <span class="pub-tag">Vol. II</span>
-          <span class="pub-name">KingdomCode Gaming</span>
-        </div>
-        <p class="pub-desc">Analysis and reviews on the gaming industry — the business models, mechanics, and cultural forces shaping how people play.</p>
-        <span class="pub-cta">Read the archive <span class="arrow">→</span></span>
-      </a>
-
-      <a href="https://www.patreon.com/c/KingdomCode" target="_blank" rel="noopener" class="pub-card pat r r7">
-        <div class="pub-meta">
-          <span class="pub-tag">Support</span>
-          <span class="pub-name">Patreon</span>
-        </div>
-        <p class="pub-desc">For supporters of Rocka. Early access, extra content, and direct access to the work as it develops.</p>
-        <span class="pub-cta">Become a supporter <span class="arrow">→</span></span>
-      </a>
-
-      <a href="https://payhip.com/KingdomCode" target="_blank" rel="noopener" class="pub-card dig r r8">
-        <div class="pub-meta">
-          <span class="pub-tag">Store</span>
-          <span class="pub-name">Digital Products</span>
-        </div>
-        <p class="pub-desc">Guides, references, and resources from the Kingdom Code archive. Built for people who want the tools, not just the takes.</p>
-        <span class="pub-cta">Browse the store <span class="arrow">→</span></span>
-      </a>
-
-    </div>
-
-    <div class="forthcoming r r9">
-      <div class="section-label">Forthcoming</div>
-      <ul class="coming-list">
-        <li class="coming-item">
-          <span>kingdomcodearchive.com — full build</span>
-          <span class="tag">In development</span>
-        </li>
-        <li class="coming-item">
-          <span>Gaming nail test scoring database</span>
-          <span class="tag">KCG</span>
-        </li>
-        <li class="coming-item">
-          <span>Canon comparison reference</span>
-          <span class="tag">KC</span>
-        </li>
+      <ul class="volume-list">
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+          <span class="volume-num">Vol. I</span>
+          <div>
+            <div class="volume-name">Canon & Tradition</div>
+            <p class="volume-desc">How the biblical canon formed, why it differs between traditions, and what those differences reveal about early Christianity.</p>
+          </div>
+        </a></li>
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+          <span class="volume-num">Vol. II</span>
+          <div>
+            <div class="volume-name">Reading Ancient Texts</div>
+            <p class="volume-desc">What it means to read Genesis, Psalms, or the Gospels the way their original audiences read them — and why context changes everything.</p>
+          </div>
+        </a></li>
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+          <span class="volume-num">Vol. III</span>
+          <div>
+            <div class="volume-name">Inherited Assumptions</div>
+            <p class="volume-desc">The ideas most Christians carry without examination — where they came from, how they spread, and whether the evidence supports them.</p>
+          </div>
+        </a></li>
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+          <span class="volume-num">Vol. IV</span>
+          <div>
+            <div class="volume-name">History & Context</div>
+            <p class="volume-desc">The political, cultural, and historical forces that shaped Christian doctrine, practice, and memory over two thousand years.</p>
+          </div>
+        </a></li>
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+          <span class="volume-num">Vol. V</span>
+          <div>
+            <div class="volume-name">Modern Christianity</div>
+            <p class="volume-desc">How ancient decisions continue to shape contemporary faith — the long shadow of councils, creeds, and contested texts.</p>
+          </div>
+        </a></li>
       </ul>
-    </div>
+    </section>
 
-    <div class="subscribe">
-      <div class="section-label">Stay in the Loop</div>
+    <!-- READING PATHS -->
+    <section class="section">
+      <div class="section-header">
+        <span class="label">Where to Begin</span>
+      </div>
+
+      <ul class="path-list">
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="path-item">
+          <span class="path-title">Start Here — An Introduction to Kingdom Code</span>
+          <span class="path-tag">Start</span>
+        </a></li>
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="path-item">
+          <span class="path-title">How the Biblical Canon Was Formed</span>
+          <span class="path-tag">Canon Series</span>
+        </a></li>
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="path-item">
+          <span class="path-title">Reading Genesis Like an Ancient Text</span>
+          <span class="path-tag">Ancient Texts</span>
+        </a></li>
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="path-item">
+          <span class="path-title">The Ethiopian Tradition Series</span>
+          <span class="path-tag">Tradition</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <!-- ALSO FROM ROCKA -->
+    <section class="section">
+      <div class="section-header">
+        <span class="label">Also from Rocka</span>
+      </div>
+
+      <div class="pub-grid">
+        <a href="https://kingdomcodegaming.substack.com" target="_blank" rel="noopener" class="pub-tile kcg">
+          <div class="pub-tile-tag">Publication</div>
+          <div class="pub-tile-name">KingdomCode Gaming</div>
+          <p class="pub-tile-desc">The systems, incentives, and architectures shaping the modern gaming industry.</p>
+        </a>
+        <a href="https://www.patreon.com/c/KingdomCode" target="_blank" rel="noopener" class="pub-tile pat">
+          <div class="pub-tile-tag">Support</div>
+          <div class="pub-tile-name">Patreon</div>
+          <p class="pub-tile-desc">Early access, extra content, and direct support of the work as it develops.</p>
+        </a>
+        <a href="https://payhip.com/KingdomCode" target="_blank" rel="noopener" class="pub-tile dig">
+          <div class="pub-tile-tag">Store</div>
+          <div class="pub-tile-name">Digital Products</div>
+          <p class="pub-tile-desc">Guides, references, and resources from the Kingdom Code archive.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <div class="section-header">
+        <span class="label">About</span>
+      </div>
+      <p class="about-text">Rocka is an independent analyst exploring how ancient texts, historical memory, and modern systems shape the world we live in. Kingdom Code exists to investigate — not to teach doctrine, not to defend tradition, but to follow questions wherever the evidence leads.</p>
+    </section>
+
+    <!-- SUBSCRIBE -->
+    <section class="section">
+      <div class="section-header">
+        <span class="label">Stay in the Loop</span>
+      </div>
       <p class="subscribe-tagline">Drop your email. You'll hear when something worth reading drops.</p>
 
       <div data-fs-success class="subscribe-success"></div>
@@ -501,12 +602,13 @@
         <span data-fs-error="email" class="subscribe-error"></span>
         <span data-fs-error class="subscribe-error"></span>
       </form>
-    </div>
+    </section>
 
-    <footer class="r r9" style="animation-delay:1.2s">
-      <span class="mono">kingdomcodearchive.com</span>
+    <!-- FOOTER -->
+    <footer>
+      <span class="label">kingdomcodearchive.com</span>
       <div class="dot"></div>
-      <span class="mono">Rocka</span>
+      <span class="label">Rocka</span>
     </footer>
 
   </div>
