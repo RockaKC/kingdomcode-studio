@@ -7,20 +7,17 @@
   <meta name="description" content="Independent investigation of Christianity, history, canon, and culture.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:       #F4F0E6;
-      --surface:  #EDE8DA;
-      --border:   #D2C9B6;
-      --text:     #26221D;
-      --muted:    #685E50;
-      --faint:    #B5A898;
-      --bronze:   #8A6C38;
-      --olive:    #586848;
-      --red:      #8A3828;
-      --kcg:      #486858;
-      --dig:      #6C6898;
+      --bg:     #080705;
+      --text:   #DDD5BE;
+      --muted:  #6B5F4E;
+      --faint:  #1E1B14;
+      --border: #2A2418;
+      --gold:   #C8A040;
+      --green:  #4A8A5A;
+      --red:    #A83830;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,19 +31,18 @@
     }
 
     .wrapper {
-      max-width: 720px;
+      max-width: 700px;
       margin: 0 auto;
       padding: 0 40px;
     }
 
-    /* --- Utilities --- */
     .label {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
       font-size: 0.5rem;
-      letter-spacing: 0.3em;
-      color: var(--faint);
+      letter-spacing: 0.32em;
       text-transform: uppercase;
+      color: var(--muted);
     }
 
     /* --- Topbar --- */
@@ -58,83 +54,68 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .topbar-name {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 300;
-      font-size: 0.52rem;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .topbar-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
     .topbar-link {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.5rem;
-      letter-spacing: 0.18em;
-      color: var(--faint);
-      text-decoration: none;
+      font-size: 0.48rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
       transition: color 0.2s;
     }
-    .topbar-link:hover { color: var(--bronze); }
+    .topbar-link:hover { color: var(--gold); }
 
     /* --- Hero --- */
     .hero {
-      padding: 76px 0 68px;
+      padding: 80px 0 72px;
       text-align: center;
     }
 
     .hero-eyebrow {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.5rem;
-      letter-spacing: 0.34em;
-      color: var(--faint);
+      font-size: 0.48rem;
+      letter-spacing: 0.36em;
       text-transform: uppercase;
-      margin-bottom: 30px;
+      color: var(--muted);
+      margin-bottom: 28px;
     }
 
     .hero-wordmark {
       font-family: 'Cormorant SC', serif;
       font-weight: 300;
-      font-size: clamp(3.4rem, 13vw, 6.2rem);
+      font-size: clamp(3.4rem, 13vw, 6rem);
       letter-spacing: 0.1em;
       line-height: 1;
       color: var(--text);
       margin-bottom: 36px;
     }
 
-    .hero-wordmark .accent { color: var(--bronze); }
+    .hero-wordmark .gold  { color: var(--gold); }
 
     .hero-rule {
-      width: 44px;
+      width: 40px;
       height: 1px;
-      background: var(--bronze);
-      opacity: 0.5;
+      background: var(--gold);
+      opacity: 0.45;
       margin: 0 auto 32px;
     }
 
     .hero-position {
-      font-size: clamp(1.05rem, 3vw, 1.22rem);
+      font-size: clamp(1.05rem, 3vw, 1.2rem);
       font-weight: 300;
       line-height: 1.75;
       color: var(--muted);
-      max-width: 460px;
+      max-width: 440px;
       margin: 0 auto 14px;
     }
 
     .hero-tagline {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 300;
       font-style: italic;
-      color: var(--faint);
+      color: #3A3228;
     }
 
     /* --- Sections --- */
@@ -153,34 +134,34 @@
     .section-link {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.48rem;
+      font-size: 0.46rem;
       letter-spacing: 0.2em;
-      color: var(--faint);
-      text-decoration: none;
       text-transform: uppercase;
+      color: #2A2418;
+      text-decoration: none;
       transition: color 0.2s;
     }
-    .section-link:hover { color: var(--bronze); }
+    .section-link:hover { color: var(--gold); }
 
     /* --- Current Investigation --- */
     .investigation-card {
       display: block;
       padding: 36px;
-      background: var(--surface);
-      border-left: 2px solid var(--bronze);
+      background: var(--faint);
+      border-left: 2px solid var(--gold);
       text-decoration: none;
       color: inherit;
-      transition: background 0.25s;
+      transition: background 0.22s;
     }
-    .investigation-card:hover { background: #E8E2D2; }
+    .investigation-card:hover { background: #231F16; }
 
     .investigation-vol {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.48rem;
+      font-size: 0.46rem;
       letter-spacing: 0.26em;
-      color: var(--bronze);
       text-transform: uppercase;
+      color: var(--gold);
       margin-bottom: 18px;
     }
 
@@ -205,10 +186,10 @@
     .investigation-cta {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.54rem;
+      font-size: 0.52rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--bronze);
+      color: var(--gold);
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -221,31 +202,34 @@
 
     .volume-item {
       display: grid;
-      grid-template-columns: 96px 1fr;
+      grid-template-columns: 88px 1fr;
       gap: 24px;
-      padding: 24px 0;
+      padding: 22px 0;
       border-top: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
       transition: opacity 0.2s;
     }
     .volume-item:last-child { border-bottom: 1px solid var(--border); }
-    .volume-item:hover { opacity: 0.65; }
+    .volume-item:hover { opacity: 0.6; }
 
     .volume-num {
       font-family: 'Cormorant SC', serif;
       font-weight: 300;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       letter-spacing: 0.16em;
-      color: var(--bronze);
       text-transform: uppercase;
       padding-top: 3px;
     }
 
+    .v1 .volume-num, .v4 .volume-num { color: var(--gold); }
+    .v2 .volume-num, .v5 .volume-num { color: var(--green); }
+    .v3 .volume-num                   { color: var(--red); }
+
     .volume-name {
       font-family: 'Cormorant SC', serif;
       font-weight: 400;
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       letter-spacing: 0.04em;
       color: var(--text);
       margin-bottom: 6px;
@@ -266,7 +250,7 @@
       justify-content: space-between;
       align-items: baseline;
       gap: 20px;
-      padding: 17px 0;
+      padding: 16px 0;
       border-top: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
@@ -279,140 +263,17 @@
       color: var(--text);
       transition: color 0.2s;
     }
-    .path-item:hover .path-title { color: var(--bronze); }
+    .path-item:hover .path-title { color: var(--green); }
 
     .path-tag {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 0.46rem;
+      font-size: 0.44rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--faint);
+      color: #2A2418;
       white-space: nowrap;
       flex-shrink: 0;
-    }
-
-    /* --- Also from Rocka --- */
-    .pub-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-    }
-
-    .pub-tile {
-      display: block;
-      padding: 28px 24px;
-      background: var(--bg);
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.22s;
-    }
-    .pub-tile:hover { background: var(--surface); }
-
-    .pub-tile:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-    }
-
-    .pub-tile-tag {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 300;
-      font-size: 0.46rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .pub-tile-name {
-      font-family: 'Cormorant SC', serif;
-      font-weight: 400;
-      font-size: 1.1rem;
-      letter-spacing: 0.04em;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .pub-tile-desc {
-      font-size: 0.9rem;
-      font-weight: 300;
-      line-height: 1.68;
-      color: var(--muted);
-    }
-
-    .pub-tile.kcg .pub-tile-tag { color: var(--kcg); }
-    .pub-tile.pat .pub-tile-tag { color: var(--red); }
-    .pub-tile.dig .pub-tile-tag { color: var(--dig); }
-
-    /* --- About --- */
-    .about-text {
-      font-size: clamp(1.05rem, 3vw, 1.18rem);
-      font-weight: 300;
-      line-height: 1.92;
-      color: var(--muted);
-    }
-
-    /* --- Subscribe --- */
-    .subscribe-tagline {
-      font-size: 1.08rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 28px;
-    }
-
-    .subscribe-row {
-      display: flex;
-      border: 1px solid var(--border);
-      transition: border-color 0.25s;
-    }
-    .subscribe-row:focus-within { border-color: var(--bronze); }
-
-    .subscribe-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text);
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 300;
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      padding: 14px 16px;
-    }
-    .subscribe-input::placeholder { color: var(--faint); }
-
-    .subscribe-btn {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 300;
-      font-size: 0.48rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: transparent;
-      border: none;
-      border-left: 1px solid var(--border);
-      padding: 14px 20px;
-      cursor: pointer;
-      transition: color 0.25s;
-      white-space: nowrap;
-    }
-    .subscribe-btn:hover { color: var(--bronze); }
-    .subscribe-btn:disabled { opacity: 0.4; cursor: default; }
-
-    .subscribe-success {
-      font-size: 0.95rem;
-      font-style: italic;
-      color: var(--olive);
-    }
-
-    .subscribe-error {
-      display: block;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.48rem;
-      letter-spacing: 0.1em;
-      color: var(--red);
-      margin-top: 10px;
     }
 
     /* --- Footer --- */
@@ -428,17 +289,15 @@
       width: 3px;
       height: 3px;
       border-radius: 50%;
-      background: var(--faint);
+      background: #2A2418;
     }
 
     /* --- Mobile --- */
-    @media (max-width: 560px) {
+    @media (max-width: 540px) {
       .wrapper { padding: 0 22px; }
-      .hero { padding: 52px 0 48px; }
-      .volume-item { grid-template-columns: 72px 1fr; gap: 14px; }
-      .pub-grid { grid-template-columns: 1fr; }
-      .investigation-card { padding: 24px 20px; }
-      .topbar-links .topbar-link:first-child { display: none; }
+      .hero { padding: 56px 0 48px; }
+      .volume-item { grid-template-columns: 64px 1fr; gap: 14px; }
+      .investigation-card { padding: 24px 18px; }
     }
   </style>
 </head>
@@ -446,32 +305,26 @@
 
   <div class="wrapper">
 
-    <!-- TOPBAR -->
     <header class="topbar">
-      <span class="topbar-name">Kingdom Code</span>
-      <nav class="topbar-links">
-        <a href="https://kingdomcode.substack.com/archive" target="_blank" rel="noopener" class="topbar-link">Archive</a>
-        <a href="mailto:contact@kingdomcodearchive.com" class="topbar-link">Contact</a>
-      </nav>
+      <span class="label">Kingdom Code</span>
+      <a href="https://kingdomcode.substack.com/archive" target="_blank" rel="noopener" class="topbar-link">Archive</a>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-eyebrow">Independent Publication</div>
-      <h1 class="hero-wordmark">Kingdom<br><span class="accent">Code</span></h1>
+      <h1 class="hero-wordmark">Kingdom<br><span class="gold">Code</span></h1>
       <div class="hero-rule"></div>
       <p class="hero-position">Independent investigation of Christianity, history, canon, and culture.</p>
       <p class="hero-tagline">Following questions wherever the evidence leads.</p>
     </section>
 
-    <!-- CURRENT INVESTIGATION -->
     <section class="section">
       <div class="section-header">
         <span class="label">Current Investigation</span>
         <a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="section-link">View archive →</a>
       </div>
 
-      <!-- UPDATE: Change href, title, and description to your latest featured essay -->
+      <!-- UPDATE: href, title, and description to your latest featured essay -->
       <a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="investigation-card">
         <div class="investigation-vol">Kingdom Code · Vol. I</div>
         <h2 class="investigation-title">The Ethiopian Orthodox Canon and the Question of Biblical Closure</h2>
@@ -480,7 +333,6 @@
       </a>
     </section>
 
-    <!-- RESEARCH VOLUMES -->
     <section class="section">
       <div class="section-header">
         <span class="label">Research Collections</span>
@@ -488,35 +340,35 @@
       </div>
 
       <ul class="volume-list">
-        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item v1">
           <span class="volume-num">Vol. I</span>
           <div>
             <div class="volume-name">Canon & Tradition</div>
             <p class="volume-desc">How the biblical canon formed, why it differs between traditions, and what those differences reveal about early Christianity.</p>
           </div>
         </a></li>
-        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item v2">
           <span class="volume-num">Vol. II</span>
           <div>
             <div class="volume-name">Reading Ancient Texts</div>
             <p class="volume-desc">What it means to read Genesis, Psalms, or the Gospels the way their original audiences read them — and why context changes everything.</p>
           </div>
         </a></li>
-        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item v3">
           <span class="volume-num">Vol. III</span>
           <div>
             <div class="volume-name">Inherited Assumptions</div>
             <p class="volume-desc">The ideas most Christians carry without examination — where they came from, how they spread, and whether the evidence supports them.</p>
           </div>
         </a></li>
-        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item v4">
           <span class="volume-num">Vol. IV</span>
           <div>
             <div class="volume-name">History & Context</div>
             <p class="volume-desc">The political, cultural, and historical forces that shaped Christian doctrine, practice, and memory over two thousand years.</p>
           </div>
         </a></li>
-        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item">
+        <li><a href="https://kingdomcode.substack.com" target="_blank" rel="noopener" class="volume-item v5">
           <span class="volume-num">Vol. V</span>
           <div>
             <div class="volume-name">Modern Christianity</div>
@@ -526,7 +378,6 @@
       </ul>
     </section>
 
-    <!-- READING PATHS -->
     <section class="section">
       <div class="section-header">
         <span class="label">Where to Begin</span>
@@ -552,59 +403,6 @@
       </ul>
     </section>
 
-    <!-- ALSO FROM ROCKA -->
-    <section class="section">
-      <div class="section-header">
-        <span class="label">Also from Rocka</span>
-      </div>
-
-      <div class="pub-grid">
-        <a href="https://kingdomcodegaming.substack.com" target="_blank" rel="noopener" class="pub-tile kcg">
-          <div class="pub-tile-tag">Publication</div>
-          <div class="pub-tile-name">KingdomCode Gaming</div>
-          <p class="pub-tile-desc">The systems, incentives, and architectures shaping the modern gaming industry.</p>
-        </a>
-        <a href="https://www.patreon.com/c/KingdomCode" target="_blank" rel="noopener" class="pub-tile pat">
-          <div class="pub-tile-tag">Support</div>
-          <div class="pub-tile-name">Patreon</div>
-          <p class="pub-tile-desc">Early access, extra content, and direct support of the work as it develops.</p>
-        </a>
-        <a href="https://payhip.com/KingdomCode" target="_blank" rel="noopener" class="pub-tile dig">
-          <div class="pub-tile-tag">Store</div>
-          <div class="pub-tile-name">Digital Products</div>
-          <p class="pub-tile-desc">Guides, references, and resources from the Kingdom Code archive.</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section">
-      <div class="section-header">
-        <span class="label">About</span>
-      </div>
-      <p class="about-text">Rocka is an independent analyst exploring how ancient texts, historical memory, and modern systems shape the world we live in. Kingdom Code exists to investigate — not to teach doctrine, not to defend tradition, but to follow questions wherever the evidence leads.</p>
-    </section>
-
-    <!-- SUBSCRIBE -->
-    <section class="section">
-      <div class="section-header">
-        <span class="label">Stay in the Loop</span>
-      </div>
-      <p class="subscribe-tagline">Drop your email. You'll hear when something worth reading drops.</p>
-
-      <div data-fs-success class="subscribe-success"></div>
-
-      <form id="subscribe-form">
-        <div class="subscribe-row">
-          <input type="email" name="email" class="subscribe-input" placeholder="your@email.com" data-fs-field required />
-          <button type="submit" class="subscribe-btn" data-fs-submit-btn>Subscribe</button>
-        </div>
-        <span data-fs-error="email" class="subscribe-error"></span>
-        <span data-fs-error class="subscribe-error"></span>
-      </form>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
       <span class="label">kingdomcodearchive.com</span>
       <div class="dot"></div>
@@ -612,12 +410,6 @@
     </footer>
 
   </div>
-
-  <script>
-    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-    formspree('initForm', { formElement: '#subscribe-form', formId: 'xeedvrde' });
-  </script>
-  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
